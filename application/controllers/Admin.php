@@ -163,4 +163,12 @@ class Admin extends CI_Controller
             redirect('admin/pelanggan');
         }
     }
+    public function hapuspelanggan($id)
+    {
+        $this->load->model('Pelanggan_model');
+
+        $this->Pelanggan_model->hapusPelanggan($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data pelanggan berhasil dihapus</div>');
+        redirect('admin/pelanggan');
+    }
 }

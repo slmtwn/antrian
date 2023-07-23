@@ -10,22 +10,13 @@
                         <div class="form-group row">
                             <label for="id_pelanggan" class="col-sm-2 col-form-label">ID Pelanggan</label>
                             <div class="col-sm-4">
-                                <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan" value="" onkeyup="isi_otomatis()">
+                                <select class="custom-select" name="id_pelanggan" id="id_pelanggan">
+                                    <option selected>Open this select menu</option>
+                                    <?php foreach ($pelanggan as $plg) : ?>
+                                        <option value="<?= $plg['id_pelanggan']; ?>"><?= $plg['id_pelanggan'] . "|" . $plg['nm_pelanggan']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                                 <?= form_error('id_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="nm_pelanggan" class="col-sm-2 col-form-label">Nama</label>
-                            <div class="col-sm-4">
-                                <input type="text" name="nm_pelanggan" class="form-control" id="nm_pelanggan" placeholder="Nama pelanggan">
-                                <?= form_error('nm_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="alamat_pelanggan" class="col-sm-2 col-form-label">Alamat</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="alamat_pelanggan" class="form-control" id="alamat_pelanggan" placeholder="Alamat pelanggan">
-                                <?= form_error('alamat_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -9,7 +9,7 @@
      <div class="card">
          <div class="row m-3">
              <div class="col-lg">
-                 <?= $this->session->flashdata('message'); ?>
+
                  <table id="pelanggan" class="table table-striped table-bordered" style="width:100%">
                      <thead>
                          <tr>

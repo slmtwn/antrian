@@ -116,10 +116,12 @@ class User extends CI_Controller
         $idpel = $this->input->post('id_pelanggan');
 
         $this->load->model('Pemakaian_model');
+        $data['bulan'] = $this->db->get('tbl_bulan')->result_array();
+        $data['pelanggan'] = $this->db->get('tbl_pelanggan')->result_array();
 
         $this->form_validation->set_rules('id_pelanggan', 'ID Pelanggan', 'required');
-        $this->form_validation->set_rules('nm_pelanggan', 'Nama Pelanggan', 'required');
-        $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
+        // $this->form_validation->set_rules('nm_pelanggan', 'Nama Pelanggan', 'required');
+        // $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
         $this->form_validation->set_rules('akhir', 'Akhir', 'required|numeric');
 
         if ($this->form_validation->run() == false) {
@@ -131,15 +133,15 @@ class User extends CI_Controller
         } else {
             $data = [
                 'id_pelanggan' => $this->input->post('id_pelanggan'),
-                'nm_pelanggan' => $this->input->post('nm_pelanggan'),
-                'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
-                'status' => $this->input->post('status'),
-                'no_hp' => $this->input->post('nohp'),
-                'id_layanan' => $this->input->post('layanan'),
-                'tgl_daftar' => time()
+                'tahun' => $this->input->post('tahun'),
+                'bulan' => $this->input->post('bulan'),
+                'awal' => $this->input->post('awal'),
+                'akhir' => $this->input->post('akhir'),
+                'pakai' => $this->input->post('pakai'),
+                'tgl_input' => time()
             ];
             $this->db->insert('tbl_pakai', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pelanggan berhasil ditambahkan</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pemakaian berhasil ditambahkan</div>');
             redirect('user/pemakaian');
         }
     }
@@ -156,5 +158,14 @@ class User extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/pemakaian', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function hapuspakai($id)
+    {
+        $this->load->model('Pemakaian_model');
+
+        $this->Pemakaian_model->hapusPemakaian($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data pemakaian berhasil dihapus</div>');
+        redirect('user/pemakaian');
     }
 }

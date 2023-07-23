@@ -46,8 +46,8 @@
                                         <td><?= $plg['layanan']; ?></td>
                                         <!-- <td><?= date('d F Y', $plg['tgl_daftar']); ?></td> -->
                                         <td>
-                                            <a href="<?= base_url('admin/ubahPel/') . $plg['id_pelanggan']; ?>" class="badge badge-success">edit</a>
-                                            <a href="<?= base_url('admin/hapusPel/') . $plg['id_pelanggan']; ?>" class="badge badge-danger">delete</a>
+                                            <a href="<?= base_url('admin/ubahpelanggan/') . $plg['id_pelanggan']; ?>" class="badge badge-success">edit</a>
+                                            <a href="<?= base_url('admin/hapuspelanggan/') . $plg['id_pelanggan']; ?>" class="badge badge-danger">delete</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

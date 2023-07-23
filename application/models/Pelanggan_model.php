@@ -15,6 +15,13 @@ class Pelanggan_model extends CI_Model
         $query = $this->db->get();
         return $query->row();
     }
+
+    public function hapusPelanggan($id)
+    {
+        $this->db->where('id_pelanggan', $id);
+        $this->db->delete('tbl_pelanggan');
+    }
+
     public function getLayanan()
     {
         return $this->db->get('tbl_layanan')->result_array();
