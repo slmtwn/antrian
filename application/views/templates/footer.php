@@ -99,8 +99,36 @@
             var akhir = $("#akhir").val();
 
             var jml = parseInt(akhir) - parseInt(awal);
-            $("#jml").val(jml);
+            $("#pakai").val(jml);
         });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#idpel').on('input', function() {
+
+            var idpel = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('user/tambahpakai') ?>",
+                dataType: "JSON",
+                data: {
+                    idpel: id_pelanggan
+                },
+                cache: false,
+                success: function(data) {
+                    $.each(data, function(id_pelanggan, nm_pelanggan, alamat_pelanggan, awal) {
+                        $('[name="nm_pelanggan"]').val(data.nm_pelanggan);
+                        $('[name="alamat_pelanggan"]').val(data.alamat_pelanggan);
+                        $('[name="awal"]').val(data.awal);
+
+                    });
+
+                }
+            });
+            return false;
+        });
+
     });
 </script>
 </body>

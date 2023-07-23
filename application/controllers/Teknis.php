@@ -18,20 +18,7 @@ class Teknis extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function tambahPel()
-    {
-        $data['title'] = 'Tambah Pelanggan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $this->load->model('Pelanggan_model');
-        $data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('pelanggan/tambah', $data);
-        $this->load->view('templates/footer');
-    }
 
     public function tambah()
     {

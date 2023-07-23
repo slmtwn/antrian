@@ -108,109 +108,53 @@ class User extends CI_Controller
             // $new_password2 = $this->input->post('new_password2');
         }
     }
-    public function transaksi()
+
+    public function tambahpakai()
     {
-        $data['title'] = 'Transaksi';
+        $data['title'] = 'Tambah Pemakaian Air';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $idpel = $this->input->post('id_pelanggan');
 
-        $this->load->model('Admin_model');
-        $data['allTransaksi'] = $this->Admin_model->getAllTransaksi();
+        $this->load->model('Pemakaian_model');
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('transaksi/index', $data);
-        $this->load->view('templates/footer');
-    }
-    public function pelanggan()
-    {
-        $data['title'] = 'Pelanggan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->model('Pelanggan_model');
-        $data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('pelanggan/index', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function tambahPel()
-    {
-        $data['title'] = 'Tambah Pelanggan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->model('Pelanggan_model');
-        $data['pelanggan'] = $this->Pelanggan_model->getPelanggan();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('user/tambahMeteran', $data);
-        $this->load->view('templates/footer');
-    }
-
-    public function tambah()
-    {
-        $data['title'] = 'Tambah Pelanggan';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-
+        $this->form_validation->set_rules('id_pelanggan', 'ID Pelanggan', 'required');
         $this->form_validation->set_rules('nm_pelanggan', 'Nama Pelanggan', 'required');
         $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('pelanggan/tambah', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $data = [
-                'nm_pelanggan' => $this->input->post('nm_pelanggan'),
-                'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
-                'status' => $this->input->post('status'),
-                'tgl_daftar' => time()
-            ];
-            $this->db->insert('pelanggan', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Sub Menu added!</div>');
-            redirect('teknis/pelanggan');
-        }
-    }
-    public function inputMeteran()
-    {
-        $data['title'] = 'Input Meteran';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-
-
-        $this->form_validation->set_rules('akhir', 'Meteran', 'required');
+        $this->form_validation->set_rules('akhir', 'Akhir', 'required|numeric');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('user/transaksi', $data);
+            $this->load->view('user/tambahpakai', $data);
             $this->load->view('templates/footer');
         } else {
             $data = [
                 'id_pelanggan' => $this->input->post('id_pelanggan'),
-                'tahun' => $this->input->post('tahun'),
-                'bulan' => $this->input->post('bulan'),
-                'tarif' => '',
-                'tagihan' => '',
-                'status' => '0',
-                'tglbayar' => '',
-                'kubik' => $this->input->post('jml'),
-                'meteran' => $this->input->post('akhir')
+                'nm_pelanggan' => $this->input->post('nm_pelanggan'),
+                'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
+                'status' => $this->input->post('status'),
+                'no_hp' => $this->input->post('nohp'),
+                'id_layanan' => $this->input->post('layanan'),
+                'tgl_daftar' => time()
             ];
-            $this->db->insert('transaksi', $data);
-            //$this->db->insert('transaksi', '', $data['id_pelanggan']);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Sub Menu added!</div>');
-            redirect('user/transaksi');
+            $this->db->insert('tbl_pakai', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data pelanggan berhasil ditambahkan</div>');
+            redirect('user/pemakaian');
         }
+    }
+    public function pemakaian()
+    {
+        $data['title'] = 'Pelanggan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Pemakaian_model');
+        $data['pemakaian'] = $this->Pemakaian_model->getAllPemakaian();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/pemakaian', $data);
+        $this->load->view('templates/footer');
     }
 }

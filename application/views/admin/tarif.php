@@ -1,20 +1,41 @@
+<!-- Begin Page Content -->
 <div class="container-fluid">
+    <?= $this->session->flashdata('message'); ?>
     <div class="card">
-        <div class="card-body">
-            Tarif ini akan menentukan berapa yang harus dibayar pelanggan setiap kubik pemakaian air PAMSIMAS.
-            <hr>
-            <form action="<? base_url('admin/tarif'); ?>" method="post">
-                <div class="form-group row">
-                    <label for="tarif" class="col-sm-2 col-form-label">Tarif</label>
-                    <div class="col-sm-2">
-                        <?php foreach ($tarif as $tf) : ?>
-                            <input type="text" class="form-control" id="tarif" value="<?= $tf['tarif']; ?>">
+        <div class="row m-3">
+            <div class="col-lg">
+                <?= $this->session->flashdata('message'); ?>
+                <table id="pelanggan" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Layanan</th>
+                            <th>Tarif</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1; ?>
+                        <?php foreach ($tarif as $trf) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <!-- <td><?= $pakai['id_pakai']; ?></td> -->
+                                <td><?= $trf['layanan']; ?></td>
+                                <td><?= $trf['tarif']; ?></td>
+
+                                <td>
+                                    <a href="<?= base_url('admin/edittarif/') . $trf['id_layanan']; ?>" class="badge badge-success">edit</a>
+                                    <a href="<?= base_url('admin/hpstarif/') . $trf['id_layanan']; ?>" class="badge badge-danger">hapus</a>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
-                    </div>
-                    <button type="button" class="btn btn-success" name="updateTarif">Update Tarif</button>
-                </div>
-            </form>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+<!-- /.container-fluid -->
+
 </div>
+<!-- End of Main Content -->
