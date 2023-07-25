@@ -1,6 +1,12 @@
 ###################
-Project Pamsimas
+Project PAMSIMAS
 ###################
+APlikasi ini dibangun untuk memudahkan pencatatan dan penagihan penggunaan air di Pamsimas Gondanglegi Wedomartani Ngemplak Sleman DIY. 
+Dibangun menggunakan framework `Codeigniter 3 <https://codeigniter.com/download>`_. Dan menggunakan database MySQL.
+
+*******************
+Apakah Codeigniter itu silahkan baca selengkapnya dibawah ini
+*******************
 
 ###################
 What is CodeIgniter
