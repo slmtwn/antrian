@@ -8,6 +8,13 @@
                 <div class="card-body col-lg">
                     <form method="post">
                         <div class="form-group row">
+                            <label for="id_pelanggan" class="col-sm-2 col-form-label">No Pemakaian</label>
+                            <div class="col-sm-2">
+                                <input type="text" name="id_pakai" class="form-control-plaintext font-weight-bold text-left" id="id_pakai" value="<?= $id_pakai; ?>">
+                                <?= form_error('id_pakai', '<small class="text-danger pl-3">', '</small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="id_pelanggan" class="col-sm-2 col-form-label">ID Pelanggan</label>
                             <div class="col-sm-2">
                                 <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan">
@@ -52,6 +59,18 @@
                             <div class="col-sm-2">
                                 <input type="text" name="pakai" class="form-control" id="pakai" readonly>
                                 <?= form_error('pakai', '<small class="text-danger pl-3">', '</small>') ?>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tarif" class="col-sm-2 col-form-label">Tarif</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="tarif" class="form-control-plaintext font-weight-bold text-left" id="tarif" value=1500 readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tagihan" class="col-sm-2 col-form-label">Tagihan</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="harga" id="harga" class="form-control-plaintext font-weight-bold text-left" readonly="">
                             </div>
                         </div>
                         <div class="form-group row">

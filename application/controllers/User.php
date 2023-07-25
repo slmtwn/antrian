@@ -118,6 +118,15 @@ class User extends CI_Controller
         $this->db->order_by('id_bulan', 'ASC');
         $data['bulan'] = $this->db->get('tbl_bulan')->result_array();
 
+        $data['tarif'] = $this->Pemakaian_model->getTarif();
+
+        $row = $this->Pemakaian_model->id_terakhir();
+        $config['id'] = $row->id_pakai;
+        $config['awalan'] = 'GL';
+        //$config['id'] = '0';
+        $this->auto_number->config($config);
+        $data['id_pakai'] = $this->auto_number->generate_id();
+
         $this->form_validation->set_rules('id_pelanggan', 'ID Pelanggan', 'required');
         $this->form_validation->set_rules('akhir', 'Akhir', 'required|numeric');
 
@@ -130,7 +139,8 @@ class User extends CI_Controller
             $this->load->view('user/tambahpakai', $data);
             $this->load->view('templates/footer');
         } else {
-            $data = [
+            $datapakai = [
+                'id_pakai' => $this->input->post('id_pakai'),
                 'id_pelanggan' => $this->input->post('id_pelanggan'),
                 'tahun' => $this->input->post('tahun'),
                 'bulan' => $this->input->post('bulan'),
@@ -139,7 +149,14 @@ class User extends CI_Controller
                 'pakai' => $this->input->post('pakai'),
                 'tgl_input' => time()
             ];
-            $this->db->insert('tbl_pakai', $data);
+            $this->db->insert('tbl_pakai', $datapakai);
+
+            $datatagihan = [
+                'id_pakai' => $this->input->post('id_pakai'),
+                'tagihan' => $this->input->post('harga'),
+                'status' => '0'
+            ];
+            $this->db->insert('tbl_tagihan', $datatagihan);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Pemakaian berhasil ditambahkan</div>');
             redirect('user/pemakaian');
         }
@@ -166,6 +183,12 @@ class User extends CI_Controller
         $id_pelanggan = $this->input->post('id_pelanggan');
         $data = $this->m_pos->get_data_barang_bykode($id_pelanggan);
         echo json_encode($data);
+    }
+
+    function tarif()
+    {
+        $this->load->model('Pemakaian_model');
+        $data['tarif'] = $this->Pemakaian_model->getTarif();
     }
 
     public function hapuspakai($id)

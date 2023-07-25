@@ -31,9 +31,9 @@
                                  <td><?= $pakai['id_pelanggan']; ?></td>
                                  <td><?= $pakai['nm_pelanggan']; ?></td>
                                  <td><?= $pakai['nama_bulan'] . " - " . $pakai['tahun']; ?> </td>
-                                 <td><?= $pakai['awal']; ?></td>
-                                 <td><?= $pakai['akhir']; ?></td>
-                                 <td><?= $pakai['pakai']; ?></td>
+                                 <td><?= $pakai['awal']; ?> M<sup>3</sup></td>
+                                 <td><?= $pakai['akhir']; ?> M<sup>3</sup></td>
+                                 <td><?= $pakai['pakai']; ?> M<sup>3</sup>`</td>
                                  <td>
                                      <a href="<?= base_url('user/hapuspakai/') . $pakai['id_pakai']; ?>" class="badge badge-danger">hapus</a>
                                  </td>

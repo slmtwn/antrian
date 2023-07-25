@@ -79,6 +79,12 @@
         responsive: true;
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tagihan').dataTable();
+        responsive: true;
+    });
+</script>
 </script>
 <!-- datatable pelanggan-->
 <script type="text/javascript">
@@ -97,9 +103,12 @@
         $("#awal, #akhir").keyup(function() {
             var awal = $("#awal").val();
             var akhir = $("#akhir").val();
-
             var jml = parseInt(akhir) - parseInt(awal);
             $("#pakai").val(jml);
+
+            var tarif = $("#tarif").val();
+            var harga = parseInt(jml) * parseInt(tarif);
+            $("#harga").val(harga);
         });
     });
 </script>
