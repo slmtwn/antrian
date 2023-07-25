@@ -30,7 +30,7 @@
                                  <td><?= $i++; ?></td>
                                  <td><?= $pakai['id_pelanggan']; ?></td>
                                  <td><?= $pakai['nm_pelanggan']; ?></td>
-                                 <td><?= $pakai['nama_bulan'] . "-" . $pakai['tahun']; ?> </td>
+                                 <td><?= $pakai['nama_bulan'] . " - " . $pakai['tahun']; ?> </td>
                                  <td><?= $pakai['awal']; ?></td>
                                  <td><?= $pakai['akhir']; ?></td>
                                  <td><?= $pakai['pakai']; ?></td>

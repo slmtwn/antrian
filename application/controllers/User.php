@@ -113,16 +113,15 @@ class User extends CI_Controller
     {
         $data['title'] = 'Tambah Pemakaian Air';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $idpel = $this->input->post('id_pelanggan');
 
         $this->load->model('Pemakaian_model');
+        $this->db->order_by('id_bulan', 'ASC');
         $data['bulan'] = $this->db->get('tbl_bulan')->result_array();
-        $data['pelanggan'] = $this->db->get('tbl_pelanggan')->result_array();
 
         $this->form_validation->set_rules('id_pelanggan', 'ID Pelanggan', 'required');
-        // $this->form_validation->set_rules('nm_pelanggan', 'Nama Pelanggan', 'required');
-        // $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
         $this->form_validation->set_rules('akhir', 'Akhir', 'required|numeric');
+
+
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
@@ -145,9 +144,10 @@ class User extends CI_Controller
             redirect('user/pemakaian');
         }
     }
+
     public function pemakaian()
     {
-        $data['title'] = 'Pelanggan';
+        $data['title'] = 'Pemakaian Air';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Pemakaian_model');
@@ -158,6 +158,14 @@ class User extends CI_Controller
         $this->load->view('templates/topbar', $data);
         $this->load->view('user/pemakaian', $data);
         $this->load->view('templates/footer');
+    }
+
+    function get_awal()
+    {
+        $this->load->model('m_pos');
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $data = $this->m_pos->get_data_barang_bykode($id_pelanggan);
+        echo json_encode($data);
     }
 
     public function hapuspakai($id)

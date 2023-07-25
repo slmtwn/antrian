@@ -2,11 +2,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user'); ?>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fa fa-fw fa-ring"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">CI APPKU</div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-left" href="<?= base_url('user'); ?>">
+                <!-- <div class="sidebar-brand-icon">
+                    <i class="fas fa-water"></i>
+                </div> -->
+                <div class="sidebar-brand-text mx-3">PAMSIMAS GONDANGLEGI</div>
             </a>
 
             <!-- Divider -->

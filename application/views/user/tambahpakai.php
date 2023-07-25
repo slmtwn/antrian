@@ -6,16 +6,11 @@
         <div class="col-lg">
             <div class="card col-lg">
                 <div class="card-body col-lg">
-                    <form action="" method="post">
+                    <form method="post">
                         <div class="form-group row">
                             <label for="id_pelanggan" class="col-sm-2 col-form-label">ID Pelanggan</label>
-                            <div class="col-sm-4">
-                                <select class="custom-select" name="id_pelanggan" id="id_pelanggan">
-                                    <option selected>Open this select menu</option>
-                                    <?php foreach ($pelanggan as $plg) : ?>
-                                        <option value="<?= $plg['id_pelanggan']; ?>"><?= $plg['id_pelanggan'] . "|" . $plg['nm_pelanggan']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                            <div class="col-sm-2">
+                                <input type="text" name="id_pelanggan" class="form-control" id="id_pelanggan">
                                 <?= form_error('id_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
@@ -55,14 +50,13 @@
                         <div class="form-group row">
                             <label for="pakai" class="col-sm-2 col-form-label">Pakai</label>
                             <div class="col-sm-2">
-                                <input type="text" name="pakai" class="form-control" id="pakai" readonly value="">
+                                <input type="text" name="pakai" class="form-control" id="pakai" readonly>
                                 <?= form_error('pakai', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="tgl_input" class="col-sm-2 col-form-label">Tanggal Input</label>
                             <div class="col-sm-3">
-                                <input type="text" name="tgl_daftar" class="form-control" id="tgl_daftar" value="<?= date('d F Y'); ?>" readonly>
+                                <input type="hidden" name="tgl_daftar" class="form-control" id="tgl_daftar" value="<?= date('d F Y'); ?>" readonly>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -77,5 +71,30 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#id_pelanggan').on('input', function() {
+            var id_pelanggan = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('user/get_awal') ?>",
+                dataType: "JSON",
+                data: {
+                    id_pelanggan: id_pelanggan
+                },
+                cache: false,
+                success: function(data) {
+                    $.each(data, function(id_pelanggan, awal) {
+                        $('[name="awal"]').val(data.awal);
+                        //$('[name="harga"]').val(data.harga);
+                        //$('[name="satuan"]').val(data.satuan);
+                    });
+                }
+            });
+            return false;
+        });
+    });
+</script>
 <!-- /.container-fluid -->
 <!-- End of Main Content -->

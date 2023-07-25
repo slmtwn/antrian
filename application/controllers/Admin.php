@@ -13,7 +13,10 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['jml_pelanggan'] = $this->db->count_all('tbl_pelanggan');
 
+        // $this->db->select_sum('uang_bayar');
+        // $data['hasil_bulan'] = $this->db->get('tbl_pembayaran');
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
