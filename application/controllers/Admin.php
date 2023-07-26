@@ -12,8 +12,12 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
+
+        $this->load->model('Dashboard_model');
+
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['jml_pelanggan'] = $this->db->count_all('tbl_pelanggan');
+        $data['real_bln'] = $this->Dashboard_model->getRealBUlan();
 
         // $this->db->select_sum('uang_bayar');
         // $data['hasil_bulan'] = $this->db->get('tbl_pembayaran');
