@@ -18,6 +18,7 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 /sessionappku/
 /Users/slmtwn/www_apps/ciappku/sessionappku/
+/application/config/*
 # IDE Files
 #-------------------------
 /nbproject/
