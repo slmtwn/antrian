@@ -17,8 +17,12 @@ class Admin extends CI_Controller
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['jml_pelanggan'] = $this->db->count_all('tbl_pelanggan');
-        $data['real_bln'] = $this->Dashboard_model->getRealBUlan();
 
+
+        $data['totalTagihan'] = $this->Dashboard_model->getSumTotalTagihan();
+        $data['totalLunas'] = $this->Dashboard_model->getSumTagihanLunas();
+        $data['totalBlmLunas'] = $this->Dashboard_model->getSumTagihanBlmLunas();
+        $data['real_bln'] = $this->Dashboard_model->getRealBUlan();
         // $this->db->select_sum('uang_bayar');
         // $data['hasil_bulan'] = $this->db->get('tbl_pembayaran');
 
@@ -123,7 +127,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->load->model('Pelanggan_model');
-        $data['layanan'] = $this->Pelanggan_model->getLayanan();
+        $data['layanan'] = $this->db->get('tbl_layanan')->row_array();
 
         // $row = $this->Pelanggan_model->id_terakhir();
         // $config['id'] = $row->id_pelanggan;
@@ -146,7 +150,7 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('nohp', 'No Hp', 'required|numeric');
-        $this->form_validation->set_rules('layanan', 'Layanan', 'required');
+
 
 
         if ($this->form_validation->run() == false) {

@@ -21,4 +21,34 @@ class Dashboard_model extends CI_Model
             bulan=$bln")->row_array();
         //return $this->db->get('tbl_tagihan')->row_array();
     }
+    public function getSumTotalTagihan()
+    {
+        $this->db->select_sum('tagihan');
+        $query = $this->db->get('tbl_tagihan');
+        if ($query->num_rows() > 0) {
+            return $query->row()->tagihan;
+        } else {
+            return 0;
+        }
+    }
+    public function getSumTagihanLunas()
+    {
+        $this->db->select_sum('tagihan');
+        $query = $this->db->get_where('tbl_tagihan', ['status' => '1']);
+        if ($query->num_rows() > 0) {
+            return $query->row()->tagihan;
+        } else {
+            return 0;
+        }
+    }
+    public function getSumTagihanBlmLunas()
+    {
+        $this->db->select_sum('tagihan');
+        $query = $this->db->get_where('tbl_tagihan', ['status' => '0']);
+        if ($query->num_rows() > 0) {
+            return $query->row()->tagihan;
+        } else {
+            return 0;
+        }
+    }
 }

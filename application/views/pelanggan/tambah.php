@@ -48,9 +48,9 @@
                                     <label for="alamat_pelanggan" class="col-sm-2 col-form-label">Layanan</label>
                                     <div class="col-sm-3">
                                         <select class="custom-select" name="layanan" id="layanan">
-                                            <?php foreach ($layanan as $lyn) : ?>
-                                                <option value="<?= $lyn['id_layanan']; ?>"><?= $lyn['layanan']; ?></option>
-                                            <?php endforeach; ?>
+                                            <!-- <?php foreach ($layanan as $lyn) : ?> -->
+                                            <option value="<?= $layanan['id_layanan']; ?>"><?= $layanan['layanan']; ?></option>
+                                            <!-- <?php endforeach; ?> -->
                                         </select>
                                     </div>
                                 </div>
