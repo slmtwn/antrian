@@ -24,6 +24,6 @@ class Pelanggan_model extends CI_Model
 
     public function getLayanan()
     {
-        return $this->db->get('tbl_layanan')->result_array();
+        return $this->db->get('tbl_layanan')->row_array();
     }
 }
