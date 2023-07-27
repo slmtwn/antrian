@@ -2,29 +2,38 @@
 <div class="container-fluid">
     <?= $this->session->flashdata('message'); ?>
     <div class="card">
+        <div class="card-header">
+            Pembayaran Tagihan Air
+        </div>
         <div class="row m-3">
-            <div class="col-lg">
+            <div class="col-lg-8">
                 <?= $this->session->flashdata('message'); ?>
-                <table id="pelanggan" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Layanan</th>
-                            <th>Tarif</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <table class="table table-striped" style="width:100%">
                     <tbody>
                         <tr>
+                            <td>ID/Nama</td>
+                            <td>:</td>
                             <td></td>
-                            <!-- <td><?= $pakai['id_pakai']; ?></td> -->
+                        </tr>
+                        <tr>
+                            <td>Bulan/Tahun</td>
+                            <td>:</td>
                             <td></td>
+                        </tr>
+                        <tr>
+                            <td>Pemakaian</td>
+                            <td>:</td>
                             <td></td>
-
-                            <td>
-                                <a href="#" class="badge badge-success">edit</a>
-                                <a href="#" class="badge badge-danger">hapus</a>
-                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tagihan</td>
+                            <td>:</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>:</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>

@@ -27,7 +27,7 @@ class Transaksi extends CI_Controller
         $data['title'] = 'Bayar Tagihan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['tagihan'] = $this->Transaksi_model->getAllTagihan();
+        $data['tagihan'] = $this->Transaksi_model->getTagihanById($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
