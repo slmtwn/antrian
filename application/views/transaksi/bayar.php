@@ -13,7 +13,7 @@
                         <tr>
                             <td>ID/Nama</td>
                             <td>:</td>
-                            <td></td>
+                            <td><?= $bayar_id['id_pelanggan']; ?></td>
                         </tr>
                         <tr>
                             <td>Bulan/Tahun</td>

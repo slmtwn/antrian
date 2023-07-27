@@ -14,7 +14,7 @@ class Transaksi_model extends CI_Model
         from tbl_pelanggan p inner join tbl_pakai k on p.id_pelanggan=k.id_pelanggan
         inner join tbl_tagihan t on k.id_pakai=t.id_pakai
         inner join tbl_bulan b on k.bulan=b.id_bulan
-        where t.id_tagihan='$id'";
+        where t.id_tagihan='13'";
         $this->db->query($query)->row_array();
     }
 }
