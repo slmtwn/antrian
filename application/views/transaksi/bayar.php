@@ -6,12 +6,12 @@
             Pembayaran Tagihan Air
         </div>
         <div class="row m-3">
-            <div class="col-lg-8">
+            <div class="col-lg">
                 <table class="table table-striped" style="width:100%">
                     <tbody>
                         <tr>
-                            <td>ID/Nama</td>
-                            <td>:</td>
+                            <td width='150'>ID/Nama</td>
+                            <td width='4'>:</td>
                             <td><?= $bayar['id_pelanggan'] . ' - ' . $bayar['nm_pelanggan']; ?></td>
                         </tr>
                         <tr>
@@ -22,12 +22,12 @@
                         <tr>
                             <td>Pemakaian</td>
                             <td>:</td>
-                            <td><?= $bayar['pakai']; ?></td>
+                            <td><?= $bayar['pakai']; ?> M<sup>3</sup></td>
                         </tr>
                         <tr>
                             <td>Tagihan</td>
                             <td>:</td>
-                            <td><?= $bayar['tagihan']; ?></td>
+                            <td>Rp<?= number_format($bayar['tagihan'], 0, ",", "."); ?></td>
                         </tr>
                         <tr>
                             <td>Status</td>
@@ -56,7 +56,8 @@
                             <input type='hidden' class="form-control" name="tagih" id="tagih" value="<?php echo $bayar['tagihan']; ?>" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Uang Pembayaran</label>
+                            <label>
+                                <strong>Pembayaran</strong></label>
                             <input type='text' class="form-control" name="bayar" id="bayar" placeholder="Uang pembayaran" />
                         </div>
                         <div class="form-group">

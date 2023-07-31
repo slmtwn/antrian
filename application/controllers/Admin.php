@@ -182,4 +182,18 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data pelanggan berhasil dihapus</div>');
         redirect('admin/pelanggan');
     }
+    public function statuspel($id)
+    {
+        $this->db->set('status', '0');
+        $this->db->where('id_pelanggan', $id);
+        $this->db->update('tbl_pelanggan');
+        redirect('admin/pelanggan');
+    }
+    public function statuspelaktif($id)
+    {
+        $this->db->set('status', '1');
+        $this->db->where('id_pelanggan', $id);
+        $this->db->update('tbl_pelanggan');
+        redirect('admin/pelanggan');
+    }
 }

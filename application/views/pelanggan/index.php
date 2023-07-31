@@ -36,12 +36,13 @@
                                             $status = $plg['status'];
                                             switch ($status) {
                                                 case 1:
-                                                    echo 'Aktif';
+                                                    echo '<div class="badge badge-primary">Aktif</div> <a href=' . base_url('admin/statuspel/') . $plg['id_pelanggan'] . ' class="btn btn-danger">x</a>';
                                                     break;
                                                 default:
-                                                    echo 'Tidak AKtif';
+                                                    echo '<div class="badge badge-danger">Tidak AKtif</div> <a href=' . base_url('admin/statuspelaktif/') . $plg['id_pelanggan'] . '><i  class="fas fa-fw fa-user"></i></a>';
                                             }
-                                            ?></td>
+                                            ?>
+                                        </td>
                                         <td><?= $plg['no_hp']; ?></td>
                                         <td><?= $plg['layanan']; ?></td>
                                         <!-- <td><?= date('d F Y', $plg['tgl_daftar']); ?></td> -->
