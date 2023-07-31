@@ -31,7 +31,7 @@
                                 <td>Rp<?= number_format($tagih['tagihan'], 0, ",", "."); ?></td>
                                 <td>
                                     <?php if ($tagih['status'] === '0') :; ?>
-                                        <a href="<?= base_url('transaksi/cetak/bayar/') . $tagih['id_tagihan']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-cash-register fa-sm"></i> Bayar</a>
+                                        <a href="<?= base_url('transaksi/bayar/') . $tagih['id_tagihan']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-cash-register fa-sm"></i> Bayar</a>
                                     <?php else : ?>
                                         <a href="<?= base_url('transaksi/cetak_pembayaran/'); ?>." class="btn btn-success btn-sm"><i class="fa fa-print fa-sm"></i> Cetak Struk Pembayaran</a>
                                     <?php endif; ?>
