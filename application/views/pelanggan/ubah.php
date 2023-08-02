@@ -10,21 +10,21 @@
                                 <div class="form-group row">
                                     <label for="nm_pelanggan" class="col-sm-2 col-form-label">ID Pelanggan</label>
                                     <div class="col-sm-4">
-                                        <input type="text" name="id_pelanggan" class="form-control-plaintext font-weight-bold btn btn-danger" id="id_pelanggan" value="<?= $idpel; ?>">
+                                        <input type="text" name="id_pelanggan" class="form-control-plaintext font-weight-bold btn btn-danger" id="id_pelanggan" value="<?= $pelanggan['id_pelanggan']; ?>">
                                         <?= form_error('id_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="nm_pelanggan" class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-4">
-                                        <input type="text" name="nm_pelanggan" class="form-control" id="nm_pelanggan" placeholder="Nama pelanggan">
+                                        <input type="text" name="nm_pelanggan" class="form-control" id="nm_pelanggan" value="<?= $pelanggan['nm_pelanggan']; ?>">
                                         <?= form_error('nm_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="alamat_pelanggan" class="col-sm-2 col-form-label">Alamat</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="alamat_pelanggan" class="form-control" id="alamat_pelanggan" placeholder="Alamat pelanggan">
+                                        <input type="text" name="alamat_pelanggan" class="form-control" id="alamat_pelanggan" value="<?= $pelanggan['alamat_pelanggan']; ?>">
                                         <?= form_error('alamat_pelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                 </div>
@@ -40,15 +40,17 @@
                                 <div class="form-group row">
                                     <label for="alamat_pelanggan" class="col-sm-2 col-form-label">No HP</label>
                                     <div class="col-sm-4">
-                                        <input type="text" name="nohp" class="form-control" id="nohp" placeholder="No Hp">
+                                        <input type="text" name="nohp" class="form-control" id="nohp" value="<?= $pelanggan['no_hp']; ?>">
                                         <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="alamat_pelanggan" class="col-sm-2 col-form-label">Layanan</label>
                                     <div class="col-sm-3">
-                                        <input type="hidden" name="id_layanan" class="form-control" id="id_layanan" value="<?= $layanan['id_layanan']; ?>">
-                                        <input type="text" name="layanan" class="form-control" id="layanan" value="<?= $layanan['layanan']; ?>" readonly>
+                                        <input type="hidden" name="id_layanan" class="form-control" id="id_layanan" value="<?= $pelanggan['id_layanan']; ?>">
+                                        <?php if ($pelanggan['id_layanan'] == $layanan['id_layanan']) : ?>
+                                            <input type="text" name="layanan" class="form-control" id="layanan" value="<?= $layanan['layanan']; ?>" readonly>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -60,7 +62,7 @@
                                 <div class="form-group row">
                                     <label for="tgl_daftar" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-3">
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary">Ubah Data</button>
                                     </div>
                                 </div>
                             </form>

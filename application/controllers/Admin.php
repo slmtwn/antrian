@@ -166,7 +166,7 @@ class Admin extends CI_Controller
                 'alamat_pelanggan' => $this->input->post('alamat_pelanggan'),
                 'status' => $this->input->post('status'),
                 'no_hp' => $this->input->post('nohp'),
-                'id_layanan' => $this->input->post('layanan'),
+                'id_layanan' => $this->input->post('id_layanan'),
                 'tgl_daftar' => time()
             ];
             $this->db->insert('tbl_pelanggan', $data);
@@ -174,6 +174,31 @@ class Admin extends CI_Controller
             redirect('admin/pelanggan');
         }
     }
+    public function ubahpelanggan($id)
+    {
+        $this->form_validation->set_rules('nm_pelanggan', 'Nama', 'required');
+        $this->form_validation->set_rules('alamat_pelanggan', 'Alamat', 'required');
+        $this->form_validation->set_rules('nohp', 'No HP', 'required|numeric');
+
+        $data['title'] = 'Ubah Pelanggan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Pelanggan_model');
+        $data['pelanggan'] = $this->Pelanggan_model->getPelangganById($id);
+        $data['layanan'] = $this->db->get('tbl_layanan')->row_array();
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('pelanggan/ubah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Pelanggan_model->ubahDataPelanggan();
+            $this->session->set_flashdata('flash', 'diubah');
+            redirect('admin/pelanggan');
+        }
+    }
+
     public function hapuspelanggan($id)
     {
         $this->load->model('Pelanggan_model');

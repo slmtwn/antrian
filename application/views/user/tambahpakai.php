@@ -37,8 +37,12 @@
                             <label for="bulan" class="col-sm-2 col-form-label">Bulan</label>
                             <div class="col-sm-3">
                                 <select class="custom-select" name="bulan" id="bulan">
-                                    <?php foreach ($bulan as $bln) : ?>
-                                        <option value="<?= $bln['id_bulan']; ?>"><?= $bln['nama_bulan']; ?></option>
+                                    <?php foreach ($bulan as $bln) :; ?>
+                                        <?php if ($bln['id_bulan'] == date('n')) : ?>
+                                            <option value="<?= $bln['id_bulan']; ?>" selected><?= $bln['nama_bulan']; ?></option>
+                                        <?php else : ?>
+                                            <option value="<?= $bln['id_bulan']; ?>"><?= $bln['nama_bulan']; ?></option>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

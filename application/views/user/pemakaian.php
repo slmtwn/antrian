@@ -35,7 +35,7 @@
                                 <td><?= $pakai['akhir']; ?> M<sup>3</sup></td>
                                 <td><?= $pakai['pakai']; ?> M<sup>3</sup>`</td>
                                 <td>
-                                    <a href="<?= base_url('user/hapuspakai/') . $pakai['id_pakai']; ?>" class="badge badge-danger">hapus</a>
+                                    <a href="<?= base_url('user/hapuspakai/') . $pakai['id_pakai']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data pemakaian dengan Id Pakai <?= $pakai['id_pakai']; ?>?');">hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

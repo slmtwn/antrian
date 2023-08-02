@@ -13,13 +13,13 @@
                         <td colspan="4">--------------------------------------------</td>
                     </tr>
                     <tr>
-                        <td><small>Tgl : <?= date('d-m-Y', strtotime($struk['tglbayar'])); ?></small></td>
+                        <td><small>Tgl : <?= date('d/m/Y', $struk['tglbayar']); ?></small></td>
                         <td></td>
                         <td align="right" colspan="2"><small>Kasir : <?= $user['name']; ?></small></td>
 
                     </tr>
                     <tr>
-                        <th colspan="4">=========================</th>
+                        <th colspan="4">=============================</th>
                     </tr>
 
                 </thead>
@@ -48,7 +48,7 @@
                     <tr>
                         <td><small>Beban</small></td>
                         <td>:</td>
-                        <td><small><?= $struk['beban']; ?></small></td>
+                        <td><small>Rp<?= number_format($struk['beban'], 0, ',', '.'); ?></small></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -63,23 +63,23 @@
                     <tr>
                         <td><small>Tagihan</small></td>
                         <td>:</td>
-                        <td><small><?= $struk['tagihan']; ?></small></td>
+                        <td><small>Rp<?= number_format($struk['tagihan'], 0, ',', '.'); ?></small></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><small>Dibayar</td>
                         <td>:</td>
-                        <td><small><?= $struk['pembayaran']; ?></td>
+                        <td><small>Rp<?= number_format($struk['pembayaran'], 0, ',', '.'); ?></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><small>Kembali</td>
                         <td>:</td>
-                        <td><?= $struk['kembali']; ?></td>
+                        <td><small>Rp<?= number_format($struk['kembali'], 0, ',', '.'); ?></small></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <th colspan="4">========================</th>
+                        <th colspan="4">============================</th>
                     </tr>
                     <tr>
                         <th colspan="4">-------- Terima Kasih --------</th>

@@ -33,7 +33,7 @@
                                     <?php if ($tagih['status'] === '0') :; ?>
                                         <a href="<?= base_url('transaksi/bayar/') . $tagih['id_tagihan']; ?>" class="btn btn-danger btn-sm"><i class="fa fa-cash-register fa-sm"></i> Bayar</a>
                                     <?php else : ?>
-                                        <a href="<?= base_url('transaksi/cetak_pembayaran/') . $tagih['id_tagihan']; ?>" class="btn btn-success btn-sm"><i class="fa fa-print fa-sm"></i> Cetak Struk Pembayaran</a>
+                                        <a href="<?= base_url('transaksi/cetak_pembayaran/') . $tagih['id_tagihan']; ?>" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-print fa-sm"></i> Cetak Struk Pembayaran</a>
                                     <?php endif; ?>
                                 </td>
                             </tr>
