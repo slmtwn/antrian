@@ -4,7 +4,10 @@
     <!-- <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1> -->
     <div class="row">
         <div class="col-lg">
-            <div class="card col-lg">
+            <div class="card">
+                <div class="card-header">
+                    Pencatatan Pemakaian Air Pelanggan
+                </div>
                 <div class="card-body col-lg">
                     <form method="post">
                         <div class="form-group row">
@@ -95,6 +98,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">

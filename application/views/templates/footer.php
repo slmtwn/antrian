@@ -107,7 +107,8 @@
             $("#pakai").val(jml);
 
             var tarif = $("#tarif").val();
-            var harga = parseInt(jml) * parseInt(tarif);
+            var beban = $("#beban").val();
+            var harga = parseInt(jml) * parseInt(tarif) + parseInt(beban);
             $("#harga").val(harga);
         });
     });

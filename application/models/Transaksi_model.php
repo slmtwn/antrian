@@ -17,4 +17,8 @@ class Transaksi_model extends CI_Model
         inner join tbl_bulan b on k.bulan=b.id_bulan
         where t.id_tagihan=$id")->row_array();
     }
+    public function getDataStruk($id)
+    {
+        return $this->db->get_where('vw_struk', ['id_tagihan' => $id])->row_array();
+    }
 }

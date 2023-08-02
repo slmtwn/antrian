@@ -153,6 +153,7 @@ class User extends CI_Controller
 
             $datatagihan = [
                 'id_pakai' => $this->input->post('id_pakai'),
+                'beban' => $this->input->post('beban'),
                 'tagihan' => $this->input->post('harga'),
                 'status' => '0'
             ];

@@ -60,9 +60,14 @@ class Transaksi extends CI_Controller
             redirect("transaksi/bayar/$id_tagihan");
         }
     }
-    public function cetak_pembayaran()
+    public function cetak_pembayaran($id)
     {
-        $this->load->view('transaksi/struk');
+        $this->load->model('Transaksi_model');
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['struk'] = $this->Transaksi_model->getDataStruk($id);
+
+        $this->load->view('transaksi/struk', $data);
         //redirect('transaksi/');
     }
 }

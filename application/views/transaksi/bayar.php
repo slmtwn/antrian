@@ -68,7 +68,7 @@
                             <input type="submit" name="Bayar" value="Bayar" class="btn btn-primary">
                             <a href="?halaman=tagih_tampil" title="Kembali" class="btn btn-default">Batal</a>
                         <?php } else { ?>
-                            <a href="#" class="btn btn-success"><i class="fa fa-print fa-sm"></i> Cetak Struk pembayaran</a>
+                            <a href="<?= base_url('transaksi/cetak_pembayaran/') . $bayar['id_tagihan']; ?>" class="btn btn-success btn-sm"><i class="fa fa-print fa-sm"></i>Cetak Struk Pembayaran</a>
                         <?php } ?>
                         </div>
                 </form>
