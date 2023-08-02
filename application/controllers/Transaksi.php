@@ -46,7 +46,7 @@ class Transaksi extends CI_Controller
         } else {
             $databayar = [
                 'id_tagihan' => $this->input->post('id_tagihan'),
-                'tgl_bayar' => date('dmY'),
+                'tgl_bayar' => time(),
                 'uang_bayar' => $this->input->post('bayar'),
                 'kembali' => $this->input->post('kembali')
             ];
