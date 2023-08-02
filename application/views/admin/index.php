@@ -120,12 +120,9 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
+                                    <div>
+                                        <canvas id="myChart"></canvas>
                                     </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
                                 </div>
                             </div>
                         </div>

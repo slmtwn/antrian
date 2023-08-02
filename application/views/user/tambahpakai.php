@@ -62,6 +62,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="beban" class="col-sm-2 col-form-label">Beban</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="beban" class="form-control-plaintext font-weight-bold text-left" id="beban" value=15000 readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="tarif" class="col-sm-2 col-form-label">Tarif</label>
                             <div class="col-sm-3">
                                 <input type="text" name="tarif" class="form-control-plaintext font-weight-bold text-left" id="tarif" value=1500 readonly>
