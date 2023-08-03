@@ -221,4 +221,36 @@ class Admin extends CI_Controller
         $this->db->update('tbl_pelanggan');
         redirect('admin/pelanggan');
     }
+    public function cetakkartupel($id)
+    {
+        // $data['title'] = 'Cetak Kartu Pelanggan';
+        // $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // $this->load->model('Pelanggan_model');
+        // $data['pelanggan'] = $this->Pelanggan_model->getPelangganById($id);
+
+        // panggil library yang kita buat sebelumnya yang bernama pdfgenerator
+        $this->load->library('pdfgenerator');
+
+        // title dari pdf
+        $this->data['title_pdf'] = 'Laporan Penjualan Toko Kita';
+
+        // filename dari pdf ketika didownload
+        $file_pdf = 'laporan_penjualan_toko_kita';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
+
+        $html = $this->load->view('pelanggan/kartupel', $this->data, true);
+
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
+
+        // $this->load->view('templates/header', $data);
+        // $this->load->view('templates/sidebar', $data);
+        // $this->load->view('templates/topbar', $data);
+        // $this->load->view('pelanggan/index', $data);
+        // $this->load->view('templates/footer');
+    }
 }

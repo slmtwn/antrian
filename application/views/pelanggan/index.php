@@ -46,9 +46,10 @@
                                         <td><?= $plg['no_hp']; ?></td>
                                         <td><?= $plg['layanan']; ?></td>
                                         <!-- <td><?= date('d F Y', $plg['tgl_daftar']); ?></td> -->
-                                        <td>
+                                        <td align="center">
                                             <a href="<?= base_url('admin/ubahpelanggan/') . $plg['id_pelanggan']; ?>" class="badge badge-success">edit</a>
                                             <a href="<?= base_url('admin/hapuspelanggan/') . $plg['id_pelanggan']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data ini?');">delete</a>
+                                            <a href="<?= base_url('admin/cetakkartupel/'); ?>" class="badge badge-primary">Cetak Kartu</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
