@@ -221,24 +221,8 @@ class Admin extends CI_Controller
         $this->db->update('tbl_pelanggan');
         redirect('admin/pelanggan');
     }
-    public function cetakkartupel($idpel)
+    public function cetakkartupel()
     {
-
-        //$this->load->model('Pelanggan_model');
-        //$data['siswa'] = $this->siswa_model->getData();
-        $this->load->library('dompdf_gen');
-        $data['cetak'] = $this->db->get('tbl_pelanggan', ['id_pelanggan' => $idpel])->result_array();
-
-        $this->pdf->load_view('pelanggan/kartupel', $data);
-
-        $paper_size = 'A4';
-        $orientation = 'landscape';
-        $html = $this->output->get_output();
-        $this->dompdf->set_paper($paper_size, $orientation);
-
-        $this->dompdf->load_html($html);
-        $this->dompdf->render();
-        $this->dompdf->stream('idpelanggan.pdf', ['Attachment' => 0]);
     }
 
 

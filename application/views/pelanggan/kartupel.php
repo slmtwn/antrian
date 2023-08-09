@@ -1,50 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>
-        Cetak PDF
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
 <body>
-    <table class="table table-borderless">
-        <tbody>
-            <tr>
-                <td style=" width: 99.9999%;" colspan="3">
-
-                    <p class="font-weight-bold">Kartu Pelanggan</p>
-                    <p class="font-weight-bold">Kartu Pelanggan</p>
-                    <p class="font-weight-bold">Kartu Pelanggan</p>
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 16.0038%;">Id Pelanggan</td>
-                <td style="width: 2.08328%;">:</td>
-                <td style="width: 81.9128%;"><strong><?= $cetak['id_pelanggan']; ?></strong></td>
-            </tr>
-            <tr>
-                <td style="width: 16.0038%;">Nama </td>
-                <td style="width: 2.08328%;">:</td>
-                <td style="width: 81.9128%;"><?= $cetak['nm_pelanggan']; ?></td>
-            </tr>
-            <tr>
-                <td style="width: 16.0038%;">Alamat</td>
-                <td style="width: 2.08328%;">:</td>
-                <td style="width: 81.9128%;">Gondanglegi 02/22 Wedomartani Ngemplak Sleman DIY</td>
-            </tr>
-            <tr>
-                <td style="width: 16.0038%;" colspan="3">
-                    <hr />
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 16.0038%;">&nbsp;</td>
-                <td style="width: 2.08328%;">&nbsp;</td>
-                <td style="width: 81.9128%;">&nbsp;</td>
-            </tr>
-        </tbody>
-    </table>
+    Data
 </body>
-</head>
 
 </html>
