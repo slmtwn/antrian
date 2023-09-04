@@ -11,7 +11,7 @@
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 26/07/2023 14:20:42
+ Date: 18/08/2023 08:57:55
 */
 
 SET NAMES utf8mb4;
@@ -91,7 +91,7 @@ CREATE TABLE `tbl_pakai` (
   `awal` int DEFAULT NULL,
   `akhir` int DEFAULT NULL,
   `pakai` int DEFAULT NULL,
-  `tgl_input` time DEFAULT NULL,
+  `tgl_input` int DEFAULT NULL,
   PRIMARY KEY (`id_pakai`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -99,17 +99,8 @@ CREATE TABLE `tbl_pakai` (
 -- Records of tbl_pakai
 -- ----------------------------
 BEGIN;
-INSERT INTO `tbl_pakai` VALUES ('GL001', '2307230001', '2023', '1', 0, 0, 0, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL002', '2307230001', '2023', '2', 0, 15, 15, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL003', '2307230001', '2023', '3', 15, 20, 5, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL004', '2307230001', '2023', '4', 20, 25, 5, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL005', '2307230001', '2023', '5', 25, 54, 29, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL006', '2307230002', '2023', '1', 0, 0, 0, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL007', '2307230002', '2023', '2', 0, 13, 13, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL008', '2307230002', '2023', '1', 13, 20, 7, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL009', '2307230002', '2023', '4', 20, 25, 5, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL010', '2307230002', '2023', '5', 25, 34, 9, '838:59:59');
-INSERT INTO `tbl_pakai` VALUES ('GL011', '2307230001', '2023', '6', 54, 67, 13, '838:59:59');
+INSERT INTO `tbl_pakai` VALUES ('GL001', '2307230001', '2023', '7', 0, 0, 0, 1691047279);
+INSERT INTO `tbl_pakai` VALUES ('GL002', '2307230001', '2023', '8', 0, 10, 10, 1691374470);
 COMMIT;
 
 -- ----------------------------
@@ -132,8 +123,8 @@ CREATE TABLE `tbl_pelanggan` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `tbl_pelanggan` VALUES ('2307230001', 'Slamet Wiyana', 'Gondanglegi 02/22 Wedomartani', '1', '081236007300', 1, 1690118561);
-INSERT INTO `tbl_pelanggan` VALUES ('2307230002', 'Paiman Paijo', 'Gondanglegi 02/22 Wedomartani', '1', '09999999999', 1, 1690124399);
-INSERT INTO `tbl_pelanggan` VALUES ('2307250001', 'Painah', 'Gondanglegi 02/22 Wedomartani', '1', '0000090909', 1, 1690271854);
+INSERT INTO `tbl_pelanggan` VALUES ('2307230002', 'Paiman Paijo', 'Gondanglegi 02/22 Wedomartani', '1', '0819010101010', 1, 1690124399);
+INSERT INTO `tbl_pelanggan` VALUES ('2308020001', 'Sukamto MM', 'Gondanglegi 02/22 Wedomartani', '1', '098989898989', 1, 1690985118);
 COMMIT;
 
 -- ----------------------------
@@ -142,17 +133,21 @@ COMMIT;
 DROP TABLE IF EXISTS `tbl_pembayaran`;
 CREATE TABLE `tbl_pembayaran` (
   `id_tagihan` int NOT NULL AUTO_INCREMENT,
-  `tgl_bayar` time DEFAULT NULL,
+  `tgl_bayar` int DEFAULT NULL,
   `uang_bayar` int DEFAULT NULL,
   `kembali` int DEFAULT NULL,
   PRIMARY KEY (`id_tagihan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tbl_pembayaran
 -- ----------------------------
 BEGIN;
-INSERT INTO `tbl_pembayaran` VALUES (1, NULL, 10000, NULL);
+INSERT INTO `tbl_pembayaran` VALUES (27, 1690984285, 15000, 0);
+INSERT INTO `tbl_pembayaran` VALUES (29, 1690987655, 0, 0);
+INSERT INTO `tbl_pembayaran` VALUES (30, 1691047240, 0, 0);
+INSERT INTO `tbl_pembayaran` VALUES (31, 1691468286, 0, 0);
+INSERT INTO `tbl_pembayaran` VALUES (32, 1691381685, 50000, 20000);
 COMMIT;
 
 -- ----------------------------
@@ -162,26 +157,21 @@ DROP TABLE IF EXISTS `tbl_tagihan`;
 CREATE TABLE `tbl_tagihan` (
   `id_tagihan` int NOT NULL AUTO_INCREMENT,
   `id_pakai` varchar(100) DEFAULT NULL,
+  `beban` int DEFAULT NULL,
   `tagihan` int DEFAULT NULL,
   `status` char(12) DEFAULT NULL,
   PRIMARY KEY (`id_tagihan`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of tbl_tagihan
 -- ----------------------------
 BEGIN;
-INSERT INTO `tbl_tagihan` VALUES (2, 'GL001', 0, '1');
-INSERT INTO `tbl_tagihan` VALUES (3, 'GL002', 22500, '0');
-INSERT INTO `tbl_tagihan` VALUES (4, 'GL003', 7500, '0');
-INSERT INTO `tbl_tagihan` VALUES (5, 'GL004', 7500, '0');
-INSERT INTO `tbl_tagihan` VALUES (6, 'GL005', 43500, '0');
-INSERT INTO `tbl_tagihan` VALUES (7, 'GL006', 0, '0');
-INSERT INTO `tbl_tagihan` VALUES (8, 'GL007', 19500, '0');
-INSERT INTO `tbl_tagihan` VALUES (9, 'GL008', 10500, '0');
-INSERT INTO `tbl_tagihan` VALUES (10, 'GL009', 7500, '0');
-INSERT INTO `tbl_tagihan` VALUES (11, 'GL010', 13500, '0');
-INSERT INTO `tbl_tagihan` VALUES (12, 'GL011', 19500, '0');
+INSERT INTO `tbl_tagihan` VALUES (27, 'GL002', 15000, 15000, '1');
+INSERT INTO `tbl_tagihan` VALUES (29, 'GL003', 15000, 0, '1');
+INSERT INTO `tbl_tagihan` VALUES (30, 'GL004', 15000, 0, '1');
+INSERT INTO `tbl_tagihan` VALUES (31, 'GL001', 15000, 0, '1');
+INSERT INTO `tbl_tagihan` VALUES (32, 'GL002', 15000, 30000, '1');
 COMMIT;
 
 -- ----------------------------
@@ -311,7 +301,7 @@ COMMIT;
 -- View structure for vw_full_pemakai_air
 -- ----------------------------
 DROP VIEW IF EXISTS `vw_full_pemakai_air`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_full_pemakai_air` AS select `tbl_pelanggan`.`id_pelanggan` AS `id_pelanggan`,`tbl_pelanggan`.`nm_pelanggan` AS `nm_pelanggan`,`tbl_pelanggan`.`alamat_pelanggan` AS `alamat_pelanggan`,`tbl_pelanggan`.`status` AS `status`,`tbl_pelanggan`.`no_hp` AS `no_hp`,`tbl_pelanggan`.`id_layanan` AS `id_layanan`,`tbl_pelanggan`.`tgl_daftar` AS `tgl_daftar`,`tbl_pakai`.`tahun` AS `tahun`,`tbl_pakai`.`bulan` AS `bulan`,ifnull(`tbl_pakai`.`awal`,0) AS `awal`,`tbl_pakai`.`akhir` AS `akhir`,`tbl_pakai`.`pakai` AS `pakai` from (`tbl_pelanggan` left join `tbl_pakai` on((`tbl_pelanggan`.`id_pelanggan` = `tbl_pakai`.`id_pelanggan`)));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_full_pemakai_air` AS select `tbl_pelanggan`.`id_pelanggan` AS `id_pelanggan`,`tbl_pelanggan`.`nm_pelanggan` AS `nm_pelanggan`,`tbl_pelanggan`.`alamat_pelanggan` AS `alamat_pelanggan`,`tbl_pelanggan`.`no_hp` AS `no_hp`,`tbl_pelanggan`.`id_layanan` AS `id_layanan`,`tbl_pelanggan`.`tgl_daftar` AS `tgl_daftar`,`tbl_pakai`.`tahun` AS `tahun`,`tbl_pakai`.`bulan` AS `bulan`,`tbl_pakai`.`akhir` AS `akhir`,`tbl_pakai`.`pakai` AS `pakai` from (`tbl_pelanggan` left join `tbl_pakai` on((`tbl_pelanggan`.`id_pelanggan` = `tbl_pakai`.`id_pelanggan`)));
 
 -- ----------------------------
 -- View structure for vw_pelanggan
@@ -323,12 +313,18 @@ CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_pelanggan` AS select 
 -- View structure for vw_pemakaian_air
 -- ----------------------------
 DROP VIEW IF EXISTS `vw_pemakaian_air`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_pemakaian_air` AS select `tbl_pakai`.`id_pakai` AS `id_pakai`,`tbl_pelanggan`.`nm_pelanggan` AS `nm_pelanggan`,`tbl_pakai`.`tahun` AS `tahun`,`tbl_bulan`.`nama_bulan` AS `nama_bulan`,`tbl_pakai`.`awal` AS `awal`,`tbl_pakai`.`akhir` AS `akhir`,`tbl_pakai`.`pakai` AS `pakai`,`tbl_pelanggan`.`id_pelanggan` AS `id_pelanggan` from ((`tbl_pakai` join `tbl_pelanggan` on((`tbl_pakai`.`id_pelanggan` = `tbl_pelanggan`.`id_pelanggan`))) join `tbl_bulan` on((`tbl_bulan`.`id_bulan` = `tbl_pakai`.`bulan`)));
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_pemakaian_air` AS select `tbl_pakai`.`id_pakai` AS `id_pakai`,`tbl_pelanggan`.`nm_pelanggan` AS `nm_pelanggan`,`tbl_pakai`.`tahun` AS `tahun`,`tbl_bulan`.`nama_bulan` AS `nama_bulan`,`tbl_pakai`.`awal` AS `awal`,`tbl_pakai`.`akhir` AS `akhir`,`tbl_pakai`.`pakai` AS `pakai`,`tbl_pelanggan`.`id_pelanggan` AS `id_pelanggan`,`tbl_pakai`.`tgl_input` AS `tgl_input` from ((`tbl_pakai` join `tbl_pelanggan` on((`tbl_pakai`.`id_pelanggan` = `tbl_pelanggan`.`id_pelanggan`))) join `tbl_bulan` on((`tbl_bulan`.`id_bulan` = `tbl_pakai`.`bulan`))) order by `tbl_pakai`.`tgl_input` desc;
+
+-- ----------------------------
+-- View structure for vw_struk
+-- ----------------------------
+DROP VIEW IF EXISTS `vw_struk`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_struk` AS select `tbl_pembayaran`.`tgl_bayar` AS `tglbayar`,`tbl_pelanggan`.`id_pelanggan` AS `idpelanggan`,`tbl_pelanggan`.`nm_pelanggan` AS `nama_pelanggan`,`tbl_pakai`.`pakai` AS `pemakaian`,`tbl_tagihan`.`beban` AS `beban`,`tbl_tagihan`.`tagihan` AS `tagihan`,`tbl_pembayaran`.`uang_bayar` AS `pembayaran`,`tbl_pembayaran`.`kembali` AS `kembali`,`tbl_pembayaran`.`id_tagihan` AS `id_tagihan`,`tbl_bulan`.`nama_bulan` AS `nama_bulan` from ((((`tbl_tagihan` join `tbl_pembayaran` on((`tbl_tagihan`.`id_tagihan` = `tbl_pembayaran`.`id_tagihan`))) join `tbl_pakai` on((`tbl_tagihan`.`id_pakai` = `tbl_pakai`.`id_pakai`))) join `tbl_pelanggan` on((`tbl_pelanggan`.`id_pelanggan` = `tbl_pakai`.`id_pelanggan`))) join `tbl_bulan` on((`tbl_pakai`.`bulan` = `tbl_bulan`.`id_bulan`)));
 
 -- ----------------------------
 -- View structure for vw_tagihan
 -- ----------------------------
 DROP VIEW IF EXISTS `vw_tagihan`;
-CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_tagihan` AS select `p`.`id_pelanggan` AS `id_pelanggan`,`p`.`nm_pelanggan` AS `nm_pelanggan`,`t`.`id_tagihan` AS `id_tagihan`,`t`.`tagihan` AS `tagihan`,`t`.`status` AS `status`,`k`.`tahun` AS `tahun`,`k`.`pakai` AS `pakai`,`b`.`nama_bulan` AS `nama_bulan` from (((`tbl_pelanggan` `p` join `tbl_pakai` `k` on((`p`.`id_pelanggan` = `k`.`id_pelanggan`))) join `tbl_tagihan` `t` on((`k`.`id_pakai` = `t`.`id_pakai`))) join `tbl_bulan` `b` on((`k`.`bulan` = `b`.`id_bulan`))) order by `k`.`tahun`,`b`.`id_bulan`;
+CREATE ALGORITHM = UNDEFINED SQL SECURITY DEFINER VIEW `vw_tagihan` AS select `p`.`id_pelanggan` AS `id_pelanggan`,`p`.`nm_pelanggan` AS `nm_pelanggan`,`t`.`id_tagihan` AS `id_tagihan`,`t`.`tagihan` AS `tagihan`,`t`.`status` AS `status`,`k`.`tahun` AS `tahun`,`k`.`pakai` AS `pakai`,`b`.`nama_bulan` AS `nama_bulan`,`k`.`tgl_input` AS `tgl_input` from (((`tbl_pelanggan` `p` join `tbl_pakai` `k` on((`p`.`id_pelanggan` = `k`.`id_pelanggan`))) join `tbl_tagihan` `t` on((`k`.`id_pakai` = `t`.`id_pakai`))) join `tbl_bulan` `b` on((`k`.`bulan` = `b`.`id_bulan`))) order by `k`.`tgl_input` desc;
 
 SET FOREIGN_KEY_CHECKS = 1;
