@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\Nullable;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class User extends CI_Controller
@@ -109,7 +112,7 @@ class User extends CI_Controller
         }
     }
 
-    public function tambahpakai()
+    public function tambahpakai($id = '')
     {
         $data['title'] = 'Tambah Pemakaian Air';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -121,7 +124,11 @@ class User extends CI_Controller
         $data['tarif'] = $this->Pemakaian_model->getTarif();
 
         $row = $this->Pemakaian_model->id_terakhir();
-        $config['id'] = $row->id_pakai;
+        if (empty($row->id_pakai)) {
+            $config['id'] = 0;
+        } else {
+            $config['id'] = $row->id_pakai;
+        }
         $config['awalan'] = 'GL';
         //$config['id'] = '0';
         $this->auto_number->config($config);
@@ -134,11 +141,17 @@ class User extends CI_Controller
         $bln = $this->input->post('bulan');
         $thn = $this->input->post('tahun');
 
-        $sql = $this->db->query("SELECT id_pelanggan,tahun,bulan 
-        FROM tbl_pakai 
+        $sql = $this->db->query("SELECT id_pelanggan,tahun, bulan, tbl_tagihan.tagihan
+        FROM
+	tbl_pakai
+INNER JOIN
+	    tbl_tagihan
+	    ON 
+		tbl_pakai.id_pakai = tbl_tagihan.id_pakai
         WHERE id_pelanggan='$id_pelanggan'
         AND tahun='$thn'
-        AND bulan='$bln'");
+        AND bulan='$bln'
+        AND tagihan>0");
         $cek_data = $sql->num_rows();
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);

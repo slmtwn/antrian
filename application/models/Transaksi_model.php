@@ -5,7 +5,7 @@ class Transaksi_model extends CI_Model
     public function getAllTagihan()
     {
 
-        return $this->db->get('vw_tagihan')->result_array();
+        return $this->db->get_where('vw_tagihan', ['tagihan>' => 0])->result_array();
     }
 
     public function getTagihanById($id)

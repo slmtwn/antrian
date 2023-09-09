@@ -51,7 +51,7 @@
                         <div class="form-group row">
                             <label for="awal" class="col-sm-2 col-form-label">Awal</label>
                             <div class="col-sm-2">
-                                <input type="text" name="awal" class="form-control" id="awal" readonly>
+                                <input type="text" name="awal" class="form-control" id="awal" value=0 readonly>
                                 <?= form_error('awal', '<small class="text-danger pl-3">', '</small>') ?>
                             </div>
                         </div>
@@ -121,6 +121,7 @@
                 success: function(data) {
                     $.each(data, function(id_pelanggan, awal) {
                         $('[name="awal"]').val(data.awal);
+
                         //$('[name="harga"]').val(data.harga);
                         //$('[name="satuan"]').val(data.satuan);
                     });
