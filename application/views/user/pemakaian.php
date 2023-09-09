@@ -20,6 +20,7 @@
                             <th>Meter Awal</th>
                             <th>Meter Akhir</th>
                             <th>Pakai</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,9 +34,26 @@
                                 <td><?= $pakai['nama_bulan'] . " - " . $pakai['tahun']; ?> </td>
                                 <td><?= $pakai['awal']; ?> M<sup>3</sup></td>
                                 <td><?= $pakai['akhir']; ?> M<sup>3</sup></td>
-                                <td><?= $pakai['pakai']; ?> M<sup>3</sup>`</td>
+                                <td><?= $pakai['pakai']; ?> M<sup>3</sup></td>
                                 <td>
-                                    <a href="<?= base_url('user/hapuspakai/') . $pakai['id_pakai']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data pemakaian dengan Id Pakai <?= $pakai['id_pakai']; ?>?');">hapus</a>
+                                    <?php
+                                    switch ($pakai['status']) {
+                                        case '1':
+                                            echo "<div class='badge badge-success'>Lunas</div>";
+                                            break;
+                                        default:
+                                            echo "<div class='badge badge-danger'>Belum Lunas</div>";
+                                    }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($pakai['status'] == 1) {
+                                    ?>
+                                        <div class="badge">locked</div>
+                                    <?php } else { ?>
+                                        <a href="<?= base_url('user/hapuspakai/') . $pakai['id_pakai']; ?>" class="badge badge-danger" onclick="return confirm('Yakin akan menghapus data pemakaian dengan Id Pakai <?= $pakai['id_pakai']; ?>?');">hapus</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -130,14 +130,27 @@ class User extends CI_Controller
         $this->form_validation->set_rules('id_pelanggan', 'ID Pelanggan', 'required');
         $this->form_validation->set_rules('akhir', 'Akhir', 'required|numeric');
 
+        $id_pelanggan = $this->input->post('id_pelanggan');
+        $bln = $this->input->post('bulan');
+        $thn = $this->input->post('tahun');
 
-
+        $sql = $this->db->query("SELECT id_pelanggan,tahun,bulan 
+        FROM tbl_pakai 
+        WHERE id_pelanggan='$id_pelanggan'
+        AND tahun='$thn'
+        AND bulan='$bln'");
+        $cek_data = $sql->num_rows();
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('user/tambahpakai', $data);
             $this->load->view('templates/footer');
+        } else if ($cek_data > 0) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bulan ' . $bln . ' tahun ' . $thn . ' untuk id Pelanggan ' . $id_pelanggan . ' sudah ada</div>');
+            redirect('user/tambahpakai');
+            echo var_dump($cek_data);
+            die;
         } else {
             $datapakai = [
                 'id_pakai' => $this->input->post('id_pakai'),
@@ -150,7 +163,6 @@ class User extends CI_Controller
                 'tgl_input' => time()
             ];
             $this->db->insert('tbl_pakai', $datapakai);
-
             $datatagihan = [
                 'id_pakai' => $this->input->post('id_pakai'),
                 'beban' => $this->input->post('beban'),
@@ -195,9 +207,16 @@ class User extends CI_Controller
     public function hapuspakai($id)
     {
         $this->load->model('Pemakaian_model');
-
-        $this->Pemakaian_model->hapusPemakaian($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data pemakaian berhasil dihapus</div>');
-        redirect('user/pemakaian');
+        $cek_status = $this->Pemakaian_model->cekstatus($id)->row_array();
+        // echo var_dump($cek_status);
+        // die;
+        if ($cek_status['status'] == '1') {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data sudah terbayar tidak dapat dihapus</div>');
+            redirect('user/pemakaian');
+        } else {
+            $this->Pemakaian_model->hapusPemakaian($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data pemakaian berhasil dihapus</div>');
+            redirect('user/pemakaian');
+        }
     }
 }
