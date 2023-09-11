@@ -14,7 +14,42 @@
             <!-- Topbar Navbar -->
             <div class="row">
                 <div class="col-lg mt-3">
-                    <h5 class="h3 mb-4 text-gray-800"><?= $title; ?></h5>
+                    <div id="date-container"></div>
+                    <script>
+                        function showDateTo(elemID) {
+
+                            var date = new Date();
+                            var second = date.getSeconds();
+                            var minute = date.getMinutes();
+                            var hour = date.getHours();
+                            var day = date.getDay();
+                            var dayMonth = date.getDate();
+                            var month = date.getMonth();
+                            var year = date.getYear();
+
+                            var dayArray = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum&#39;at", "Sabtu"];
+                            var monthArray = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+                            // Menambahkan angka nol di depan jika nilai kurang dari 10
+                            if (second < 10) second = '0' + second;
+                            if (minute < 10) minute = '0' + minute;
+                            if (hour < 10) hour = '0' + hour;
+                            if (dayMonth < 10) dayMonth = '0' + dayMonth;
+
+                            if (year < 1000) year += 1900;
+
+                            document.getElementById(elemID).innerHTML = dayArray[day] + ', ' + dayMonth + ' ' + monthArray[month] + ' ' + year + ' ' + hour + ':' + minute + ':' + second;
+
+                        }
+
+                        // Masukkan ke kontainer!
+                        // Pakai interval 1 detik sekali untuk efek animasi jam
+                        // (tanpa interval masih tetap bisa bekerja, tapi tidak akan ada efek animasi)
+                        setInterval(function() {
+                            showDateTo('date-container');
+                        }, 1000);
+                    </script>
+                    <!-- <h5 class="h3 mb-4 text-gray-800"><?= $title; ?></h5> -->
                 </div>
             </div>
             <ul class="navbar-nav ml-auto">
