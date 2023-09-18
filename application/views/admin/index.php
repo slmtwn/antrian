@@ -95,33 +95,33 @@
 
                     <div class="row">
                         <!-- Area Chart -->
-                        <div class="col-xl-8">
+                        <div class="col-xl-6">
                             <div class="card group">
                                 <!-- Card Header - Dropdown -->
-                                <div class="card-header py-8 d-flex flex-row align-items-center justify-content-between absolute">
-                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                                </div>
+
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div>
                                         <div>
-                                            <canvas id="myChart"></canvas>
+                                            <iframe width="530" height="315" src="https://www.youtube.com/embed/hnuikuCcQZk?si=tD2k_2FrxDn2clk3&amp;controls=0&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
+                        <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                    <h4 class="m-0 font-weight-bold text-primary text-md-center">ANTRIAN SAAT INI</h4>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div>
-                                        <canvas id="myChart"></canvas>
+                                        <h1 class="font-weight-bold text-lg-center">
+                                            <font size="100">01</font>
+                                        </h1>
                                     </div>
                                 </div>
                             </div>
