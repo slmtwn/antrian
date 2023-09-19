@@ -94,21 +94,6 @@
                     <!-- Content Row -->
 
                     <div class="row">
-                        <!-- Area Chart -->
-                        <div class="col-xl-6">
-                            <div class="card group">
-                                <!-- Card Header - Dropdown -->
-
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div>
-                                        <div>
-                                            <iframe width="530" height="315" src="https://www.youtube.com/embed/hnuikuCcQZk?si=tD2k_2FrxDn2clk3&amp;controls=0&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <!-- Donut Chart -->
                         <div class="col-xl-6 col-lg-6">
                             <div class="card shadow mb-4">

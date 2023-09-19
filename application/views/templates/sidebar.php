@@ -6,7 +6,7 @@
                 <!-- <div class="sidebar-brand-icon">
                     <i class="fas fa-water"></i>
                 </div> -->
-                <div class="sidebar-brand-text mx-3">PAMSIMAS GONDANGLEGI</div>
+                <div class="sidebar-brand-text mx-3">AN-3-AN</div>
             </a>
 
             <!-- Divider -->
